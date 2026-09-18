@@ -35,7 +35,7 @@ public class Game {
             return new GuessResult(true, 3, 0);
         }
 
-        return null;
+        return new GuessResult(false, 0, 0);
 
 
     }
