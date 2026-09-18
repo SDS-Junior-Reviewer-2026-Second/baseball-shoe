@@ -61,7 +61,17 @@ public class GameTest {
 		assertThat(result.getStrikes()).isZero();
 		assertThat(result.getBalls()).isZero();
 	}
-	
+	@Test
+	public void 스트라이크만_있을_경우_2_strike_0_ball() {
+		Game game = new Game("123");
+
+		GuessResult result = game.guess("129");
+
+		assertThat(result).isNotNull();
+		assertThat(result.isSolved()).isFalse();
+		assertThat(result.getStrikes()).isEqualTo(2);
+		assertThat(result.getBalls()).isZero();
+	}
 	@Test
 	public void 스트라이크만_있을_경우_1_strike_0_ball() {
 

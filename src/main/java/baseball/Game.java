@@ -35,8 +35,15 @@ public class Game {
             return new GuessResult(true, 3, 0);
         }
 
-        return new GuessResult(false, 0, 0);
+        int strikes = 0;
 
+        for (int i = 0; i < question.length(); i++) {
+            if (question.charAt(i) == input.charAt(i)) {
+                strikes++;
+            }
+        }
+
+        return new GuessResult(false, strikes, 0);
 
     }
 }
