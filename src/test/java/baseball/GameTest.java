@@ -28,10 +28,12 @@ public class GameTest {
 		assertThrows(IllegalArgumentException.class, () -> game.guess("A12"));
 	}
 
-	
+
 	@Test
 	public void 입력값에_중복된_숫자가_입력될_경우() {
+		Game game = new Game("123");
 
+		assertThrows(IllegalArgumentException.class, () -> game.guess("112"));
 	}
 	
 	@Test
