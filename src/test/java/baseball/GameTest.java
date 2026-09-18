@@ -1,6 +1,8 @@
 package baseball;
 
 import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class GameTest {
@@ -22,7 +24,7 @@ public class GameTest {
 	}
 	
 	@Test
-	public void 입력값에_숫자_외의_뮸자가_입력될_경우() {
+	public void 입력값에_숫자_외의_문자가_입력될_경우() {
 		Game game = new Game("123");
 
 		assertThrows(IllegalArgumentException.class, () -> game.guess("A12"));
@@ -35,10 +37,17 @@ public class GameTest {
 
 		assertThrows(IllegalArgumentException.class, () -> game.guess("112"));
 	}
-	
+
 	@Test
 	public void 숫자_세개가_전부_일치_할_경우_3_strike() {
+		Game game = new Game("123");
 
+		GuessResult result = game.guess("123");
+
+		assertThat(result).isNotNull();
+		assertThat(result.isSolved()).isTrue();
+		assertThat(result.getStrikes()).isEqualTo(3);
+		assertThat(result.getBalls()).isZero();
 	}
 	
 	@Test

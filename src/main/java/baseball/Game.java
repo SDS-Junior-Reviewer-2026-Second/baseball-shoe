@@ -8,7 +8,7 @@ public class Game {
         this.question = question;
     }
 
-    public void guess(String input) {
+    public GuessResult guess(String input) {
         if (input == null || input.isEmpty()) {
             throw new IllegalArgumentException();
         }
@@ -30,5 +30,13 @@ public class Game {
         || input.charAt(1) == input.charAt(2)) {
             throw new IllegalArgumentException();
         }
+
+        if (input.equals(question)) {
+            return new GuessResult(true, 3, 0);
+        }
+
+        return null;
+
+
     }
 }
