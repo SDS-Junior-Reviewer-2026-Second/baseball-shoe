@@ -16,5 +16,13 @@ public class Game {
         if (input.length() != 3) {
             throw new IllegalArgumentException();
         }
+
+        for (int i = 0; i < input.length(); i++) {
+            char ch = input.charAt(i);
+
+            if (ch < '0' || ch > '9') {
+                throw new IllegalArgumentException();
+            }
+        }
     }
 }
