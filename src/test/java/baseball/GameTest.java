@@ -76,14 +76,25 @@ public class GameTest {
 	public void 스트라이크만_있을_경우_1_strike_0_ball() {
 
 	}
-	
 	@Test
 	public void 볼만_있을_경우_0_strike_1_ball() {
+		Game game = new Game("123");
 
+		GuessResult result = game.guess("240");
+
+		assertThat(result.isSolved()).isFalse();
+		assertThat(result.getStrikes()).isZero();
+		assertThat(result.getBalls()).isEqualTo(1);
 	}
-	
+
 	@Test
 	public void 볼과_스트라이크가_함께_있을_경우_1_strike_1_ball() {
+		Game game = new Game("123");
 
+		GuessResult result = game.guess("136");
+
+		assertThat(result.isSolved()).isFalse();
+		assertThat(result.getStrikes()).isEqualTo(1);
+		assertThat(result.getBalls()).isEqualTo(1);
 	}
 }

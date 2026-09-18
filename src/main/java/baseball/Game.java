@@ -36,14 +36,16 @@ public class Game {
         }
 
         int strikes = 0;
+        int balls = 0;
 
         for (int i = 0; i < question.length(); i++) {
             if (question.charAt(i) == input.charAt(i)) {
                 strikes++;
+            } else if (question.indexOf(input.charAt(i)) >= 0) {
+                balls++;
             }
         }
 
-        return new GuessResult(false, strikes, 0);
-
+        return new GuessResult(false, strikes, balls);
     }
 }
