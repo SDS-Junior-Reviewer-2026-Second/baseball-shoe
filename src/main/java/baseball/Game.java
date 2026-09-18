@@ -26,15 +26,27 @@ public class Game {
         }
 
         if (input.charAt(0) == input.charAt(1)
-        || input.charAt(0) == input.charAt(2)
-        || input.charAt(1) == input.charAt(2)) {
+                || input.charAt(0) == input.charAt(2)
+                || input.charAt(1) == input.charAt(2)) {
             throw new IllegalArgumentException();
         }
 
-        if (input.equals(question)) {
-            return new GuessResult(true, 3, 0);
+        if (isSolved(input)) {
+            return createSolvedResult();
         }
 
+        return createUnsolvedResult(input);
+    }
+
+    private boolean isSolved(String input) {
+        return input.equals(question);
+    }
+
+    private GuessResult createSolvedResult() {
+        return new GuessResult(true, 3, 0);
+    }
+
+    private GuessResult createUnsolvedResult(String input) {
         int strikes = 0;
         int balls = 0;
 
